@@ -6,17 +6,17 @@ package tiso;
 
 public class Heap {
 	
-	private int heap[];
+	private char heap[];
 	private int tamanhoHeap;//asdasd
 	
 	//Construtor da classe.
 	public Heap(int tamanhoHeap) {
-		this.heap = new int[tamanhoHeap];
+		this.heap = new char[tamanhoHeap];
 		this.tamanhoHeap = tamanhoHeap;
 		
 		for(int i=0; i<tamanhoHeap; i++) {
 			
-			heap[i]= 0;
+			heap[i]='0';
 		}
 		
 	}
@@ -28,7 +28,7 @@ public class Heap {
 	}
 	
 	//Adição de uma nova variável na Heap
-	public void addHeap(int partVariavel, int index) {
+	public void addHeap(char partVariavel, int index) {
 		
 		heap[index] = partVariavel;
 		
@@ -42,16 +42,16 @@ public class Heap {
 	}
 
 	//Remoção de uma variável da Heap.
-	public int removeHeap(int index) {
+	public char removeHeap(int index) {
 		
-		int temp = -1;
+		char temp = '0';
 		
 		if(heap == null)
 		return temp;
 		
 		else {
 			temp = heap[index];
-			heap[index] = 0;
+			heap[index] = '0';
 			
 		}
 		
@@ -61,7 +61,7 @@ public class Heap {
 	}
 	
 	//Retorno da Heap no estado atual.
-	public int[] getHeap(){
+	public char[] getHeap(){
 		return heap;
 	}
 
