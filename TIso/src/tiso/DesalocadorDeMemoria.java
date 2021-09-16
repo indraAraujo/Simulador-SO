@@ -1,4 +1,9 @@
+package tiso;
 
+/*
+* Objeto que irá desalocar uma variável da heap quando for necessário.
+*
+*/
 public class DesalocadorDeMemoria
 {
 	private Heap heap;
@@ -8,6 +13,7 @@ public class DesalocadorDeMemoria
 		this.heap = heap;
 	}
 
+	//Desalocação de uma variável da heap.
 	public void desalocarVar (VariavelAlocada variavel)
 	{
 		for (int i = 0; i < variavel.getTamanho(); i ++) {

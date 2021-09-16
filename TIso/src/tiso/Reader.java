@@ -1,3 +1,5 @@
+package tiso;
+
 
 /* Lê o arquivo de configuração passado como parâmetro, 
  * e determina os valores das variáveis correspondentes.
@@ -6,8 +8,6 @@
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Scanner;
 
 public class Reader

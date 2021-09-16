@@ -1,5 +1,8 @@
+package tiso;
 
-/* Objeto responsável por monitar taxa de ocupação e fragmentação,
+
+/* 
+ * Objeto responsável por monitorar  a taxa de ocupação e fragmentação,
  * acionando o desalocador quando necessário. Mantém a estrutura
  * de dados responsável por informar sobre buracos disponíveis
  * para as requisições. 
@@ -22,6 +25,7 @@ public class AnalisadorDeMemoria
 	private ArrayList<VariavelAlocada> controle;
 	private int chamadasAoDesalocador;
 	
+	//Construtor da classe.
 	public AnalisadorDeMemoria (int tamanhoHeap, int limiteMaxOcupacao, int limiteMinOcupacao, int limiteFragmentacao, Heap heap)
 	{
 		this.tamanhoHeap = tamanhoHeap;
@@ -37,6 +41,7 @@ public class AnalisadorDeMemoria
 		atualizarBuracos();
 	}
 
+	//Algoritmo para encontrar buraco disponível para alocação - "First Fit".
 	public int primeiroEncaixe (int tamanho)
 	{
 		int retorno = -1;
@@ -49,20 +54,21 @@ public class AnalisadorDeMemoria
 		return retorno;
 	}
 
-	// analiza a heap sob ângulos diversos
+	//Análise da heap sob ângulos diversos
 	public void analisarMemoria ()
 	{
+		//Análise da Taxa de Ocupação.
 		monitorTaxaOcupacao();
+		//Análise da Taxa de Fragmentação.
 		monitorFragmentacao();
 	}
 
-	// atualiza as informações sobre os buracos na heap
+	//Atualização das informações sobre os buracos na heap.
 	public void atualizarBuracos ()
 	{
 		buracos.clear ();
 
 		for (int i = 0; i < tamanhoHeap; i++) {
-			int aux = i;
 			if (i + 1 >= tamanhoHeap) break;
 			if (heap.consult(i) == 0) {
 				int comeco = i;
@@ -77,7 +83,7 @@ public class AnalisadorDeMemoria
 
 	}
 
-	// imprime lista de buracos, para validação...
+	//Impressão da lista de buracos, para validação.
 	public void imprimeBuracos ()
 	{
 		System.out.println ("\n\t# Buracos:\n");
@@ -85,8 +91,8 @@ public class AnalisadorDeMemoria
 			System.out.println ("\t\tTamanho: " + i.getTamanho() + ", começa na posição " + i.getInicio() + ", vai até " + i.getFim());
 	}
 
-	// determina taxa de ocupação (em %), com base na quantidade e no tamanho de buracos;
-	// se necessário, aciona o desalocador
+	//Determinação da taxa de ocupação (em porcentagem), com base na quantidade e no tamanho de buracos.
+	//Se necessário, será acionado o desalocador.
 	public void monitorTaxaOcupacao ()
 	{
 		taxaOcupacao = calcularTaxaOcupacao();
@@ -103,6 +109,7 @@ public class AnalisadorDeMemoria
 			System.out.println ("\tTaxa de ocupação: " + taxaOcupacao);
 	}
 
+	//Calculo da Taxa de Ocupação.
 	public int calcularTaxaOcupacao()
 	{
 		int memoria_livre = 0;
@@ -115,7 +122,7 @@ public class AnalisadorDeMemoria
 		return taxaOcupacao;
 	}
 
-	// determinar taxa de fragmentação, mensurada a partir da quantidade de buracos,
+	//Determinação da taxa de fragmentação, mensurada a partir da quantidade de buracos,
 	// visto que a mesma é diretamente proporcional à fragmentação das variáveis
 	public void monitorFragmentacao ()
 	{

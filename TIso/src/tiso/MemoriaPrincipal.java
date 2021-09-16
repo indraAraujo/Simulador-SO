@@ -5,7 +5,7 @@ package tiso;
  *
  * @author indra
  */
-public class MemoriaPrincipa {
+public class MemoriaPrincipal {
    MemoriaSistemaOperacional sistemaOperacional;
    MemoriaUsuario usuario;
 }
