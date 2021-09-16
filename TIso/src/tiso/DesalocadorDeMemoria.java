@@ -1,20 +1,17 @@
-package tiso;
 
-/**
- * @author WillianS
- */
+public class DesalocadorDeMemoria
+{
+	private Heap heap;
 
-public class DesalocadorDeMemoria{
-    private int vari_desalocadas;
+	public DesalocadorDeMemoria(Heap heap)
+	{
+		this.heap = heap;
+	}
 
-    public DesalocadorDeMemoria(){
-        this.vari_desalocadas = 0;
-    }
-
-    public boolean desalocadorReq(int id, int base, int lim){
-        boolean desalocou = false;
-
-        if(!desalocou) 
-        return desalocou; // true ou false
-    }
+	public void desalocarVar (VariavelAlocada variavel)
+	{
+		for (int i = 0; i < variavel.getTamanho(); i ++) {
+			heap.removeHeap (variavel.getInicio() + i);
+		}
+	}
 }

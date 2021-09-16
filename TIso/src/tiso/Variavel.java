@@ -1,4 +1,3 @@
-package tiso;
 
 import java.util.Random;
 /**
@@ -8,17 +7,14 @@ import java.util.Random;
 
 public class Variavel {
     private int cod; // como vai gerar esse código?
-    private String info; //conjunto de caracteres ou instrução 
+    private String identificador; //conjunto de caracteres ou instrução 
     private int tam; //Tamanho na memória 
     private int regBase; //registrador que indica inicio do bloco
     private int regTamanho; //tamanho para ser acrescido no Base e encontrar final do bloco na memória.
-    private Random ger;
 
-    public Variavel(int tm){
-        ger = new Random();
+    public Variavel(int tm, String identificador){
         this.tam = tm;
-       // this.info = ger.toString(tam);//! esse toString não consegue receber uma variavel int como parametro
-       this.info = ger.toString();
+	this.identificador = identificador;
     }
 
     public void setRegBase(int rgB, int rgF){
@@ -46,7 +42,7 @@ public class Variavel {
         return regTamanho;
     }
 
-    public String getInfo(){
-        return info;
+    public String getIdentificador(){
+        return identificador;
     }
 }

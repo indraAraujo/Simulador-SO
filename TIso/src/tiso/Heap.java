@@ -1,12 +1,8 @@
-package tiso;
-
 
 public class Heap {
 	
-	int heap[];
+	private int heap[];
 	private int tamanhoHeap;//asdasd
-	
-
 	
 	public Heap(int tamanhoHeap) {
 		this.heap = new int[tamanhoHeap];
@@ -31,6 +27,12 @@ public class Heap {
 		
 		
 	}
+
+	public int consult (int i)
+	{
+		return heap[i];
+	}
+
 	public int removeHeap(int index) {
 		
 		int temp = -1;

@@ -1,0 +1,16 @@
+
+###############################
+#                             #
+#   Arquivo de configuração   #
+#                             #
+###############################
+
+-> Quantidade de alocações a serem feitas: 800
+-> Tamanho da heap: 500
+-> Tamanho mínimo para as variáveis dinâmicas: 1
+-> Tamanho máximo para as variáveis dinâmicas: 5
+-> Tamanho do vetor de requisições: 10000
+-> Limite mínimo de ocupação da heap (%): 20
+-> Limite máximo de ocupação da heap (%): 80
+-> Limite de fragmentação da heap (%): 80
+

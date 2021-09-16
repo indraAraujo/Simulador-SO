@@ -1,21 +1,20 @@
-package tiso;
-
 
 /**
  *
  * @author indra
  */
 public class Requisicao {
-   int identificador;
+   String identificador;
    int tamanho;
    Variavel variavel;
 
-   public Requisicao(int tm){
+   public Requisicao(int tm, String id){
     this.tamanho = tm;
-    variavel = new Variavel(tm); // ver se o tamanho da variavel vai ser o mesmo da requisição.
+    this.identificador = id;
+    variavel = new Variavel(tm, id); // ver se o tamanho da variavel vai ser o mesmo da requisição.
    }
 
-   public void setIdentificador(int id){
+   public void setIdentificador(String id){
        this.identificador = id;
    }
 
@@ -23,7 +22,7 @@ public class Requisicao {
        return variavel;
    }
 
-   public int getIdentificador(){
+   public String getIdentificador(){
        return identificador;
    } 
 }
