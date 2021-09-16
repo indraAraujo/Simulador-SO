@@ -14,10 +14,10 @@ public class DesalocadorDeMemoria
 	}
 
 	//Desalocação de uma variável da heap.
-	public void desalocarVar (VariavelAlocada variavel)
+	public void desalocarVar (Variavel variavel)
 	{
-		for (int i = 0; i < variavel.getTamanho(); i ++) {
-			heap.removeHeap (variavel.getInicio() + i);
+		for (int i = 0; i < variavel.getTam(); i ++) {
+			heap.removeHeap (variavel.getRegBase() + i);
 		}
 	}
 }

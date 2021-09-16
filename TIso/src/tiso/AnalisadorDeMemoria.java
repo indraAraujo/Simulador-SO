@@ -22,7 +22,7 @@ public class AnalisadorDeMemoria
 	private Heap heap;
 	private ArrayList<Buraco> buracos;
 	private DesalocadorDeMemoria desalocador;
-	private ArrayList<VariavelAlocada> controle;
+	private ArrayList<Variavel> controle;
 	private int chamadasAoDesalocador;
 	
 	//Construtor da classe.
@@ -134,7 +134,7 @@ public class AnalisadorDeMemoria
 		System.out.println ("\tTaxa de fragmentação: " + taxaFragmentacao + " buraco(s) / 100 posições de memória");
 	}
 
-	public void setControle(ArrayList<VariavelAlocada> c)
+	public void setControle(ArrayList<Variavel> c)
 	{
 		this.controle = c;
 	}

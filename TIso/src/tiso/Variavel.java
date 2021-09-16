@@ -28,6 +28,9 @@ public class Variavel {
         return regBase;
     }
 
+    public void setRegTamanho(int fim){
+        regTamanho = fim;
+    }
     public int getRegTamanho(){
         return regTamanho;
     }

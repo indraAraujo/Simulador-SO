@@ -13,7 +13,7 @@ public class Alocador
 	private int tamanhoHeap;
 	private Heap heap;
 	private AnalisadorDeMemoria analisador;
-	private ArrayList<VariavelAlocada> controle = new ArrayList<VariavelAlocada>();
+	private ArrayList<Variavel> controle = new ArrayList<>();
 
 	//Construtor da classe.
 	public Alocador (int tamanhoHeap, Heap heap, AnalisadorDeMemoria analisador)
@@ -33,7 +33,9 @@ public class Alocador
 
 		if (inicio != -1) {
 			result = true;
-			controle.add (new VariavelAlocada(inicio, (inicio + r.tamanho - 1), r.identificador));
+			Variavel variavel_alocada = new Variavel(inicio, r.getVariavel().getConteudo());
+			variavel_alocada.setRegTamanho((inicio + r.tamanho - 1));
+			controle.add (variavel_alocada);
 			for (int i = 0; i < r.tamanho; i++)
 				heap.addHeap (1, inicio + i);
 		}
