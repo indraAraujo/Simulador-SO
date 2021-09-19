@@ -15,9 +15,9 @@ public class Variavel {
 	    this.conteudo = conteudo;
     }
 
-    public void setRegBase(int rgB, int rgF){
+    public void setRegBase(int rgB){
         this.regBase = rgB;
-        this.regTamanho = rgF;
+
     }
 
     public int getTam(){
