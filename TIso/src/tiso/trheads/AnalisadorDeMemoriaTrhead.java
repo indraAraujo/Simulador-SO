@@ -1,42 +1,33 @@
-package tiso;
-
-import tiso.AnalisadorDeMemoria;
-
-
-/* 
- * Objeto responsável por monitorar  a taxa de ocupação e fragmentação,
- * acionando o desalocador quando necessário. Mantém a estrutura
- * de dados responsável por informar sobre buracos disponíveis
- * para as requisições. 
- *
- * */
+package tiso.trheads;
 
 import java.util.ArrayList;
+import tiso.Buraco;
+import tiso.DesalocadorDeMemoria;
+import tiso.Heap;
+import tiso.Variavel;
 
-public class AnalisadorDeMemoria
-{
-	private int tamanhoHeap;
+
+public class AnalisadorDeMemoriaTrhead {
+    private int tamanhoHeap;
 	private int limiteMaxOcupacao;
 	private int limiteMinOcupacao;
 	private int limiteFragmentacao;
 	private int taxaOcupacao;
 	private int taxaFragmentacao;
-	private Heap heap;
 	private ArrayList<Buraco> buracos;
 	private DesalocadorDeMemoria desalocador;
 	private ArrayList<Variavel> controle;
 	private int chamadasAoDesalocador;
+
 	
 	//Construtor da classe.
-	public AnalisadorDeMemoria (int tamanhoHeap, int limiteMaxOcupacao, int limiteMinOcupacao, int limiteFragmentacao, Heap heap)
-	{
+	public AnalisadorDeMemoriaTrhead (int tamanhoHeap, int limiteMaxOcupacao, int limiteMinOcupacao, int limiteFragmentacao, Heap heap){
 		this.tamanhoHeap = tamanhoHeap;
 		this.limiteMaxOcupacao = limiteMaxOcupacao;
 		this.limiteMinOcupacao = limiteMinOcupacao;
 		this.limiteFragmentacao = limiteFragmentacao;
 		this.taxaOcupacao = 0;
 		this.taxaFragmentacao = 0;
-		this.heap = heap;
 		this.buracos = new ArrayList<Buraco>();
 		this.desalocador = new DesalocadorDeMemoria(heap);
 		this.chamadasAoDesalocador = 0;
@@ -57,6 +48,12 @@ public class AnalisadorDeMemoria
 	}
 
 	//Análise da heap sob ângulos diversos
+    public void run(){
+        //Análise da Taxa de Ocupação.
+		monitorTaxaOcupacao();
+		//Análise da Taxa de Fragmentação.
+		monitorFragmentacao();
+    }
 	public void analisarMemoria (){
 		//Análise da Taxa de Ocupação.
 		monitorTaxaOcupacao();
@@ -71,9 +68,9 @@ public class AnalisadorDeMemoria
 
 		for (int i = 0; i < tamanhoHeap; i++) {
 			if (i + 1 >= tamanhoHeap) break;
-			if (heap.consult(i) == 0) {
+			if (MainTrhead.userHeap.consult(i) == 0) {
 				int comeco = i;
-				while (heap.consult(i) == 0 && heap.consult(i + 1) == 0 && i < tamanhoHeap) {
+				while (MainTrhead.userHeap.consult(i) == 0 && MainTrhead.userHeap.consult(i + 1) == 0 && i < tamanhoHeap) {
 					i ++;
 					if (i + 1 >= tamanhoHeap) break;
 				}
@@ -145,4 +142,3 @@ public class AnalisadorDeMemoria
 		return chamadasAoDesalocador;
 	}
 }
-

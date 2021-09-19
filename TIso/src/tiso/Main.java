@@ -1,20 +1,21 @@
 package tiso;
 
 
+
 public class Main
 {
-	public static void main(String[] args)
-	{
-		Reader reader = new Reader("./simulador.conf");
+	public static void main(String[] args){
 
-		int totalDeAlocacoes = reader.getTotalAlocacoes();
-		int tamanhoHeap = reader.getTamHeap();
-		int minVariavel = reader.getTamMinVar();
-		int maxVariavel = reader.getTamMaxVar();
-		int tamanho_vetor = reader.getTamVetorReq();
-		int limiteMinOcupacao = reader.getLimMinOcupHeap();
-		int limiteMaxOcupacao = reader.getLimMaxOcupHeap();
-		int limiteFragmentacao = reader.getLimFragHeap();
+		//Reader reader = new Reader("./simulador.conf");
+		long tempoI, tempoF, tempoR, tempoT = 0;
+		int totalDeAlocacoes = 100; // Quantidade de alocações a serem feitas
+		int tamanhoHeap = 1500; 
+		int minVariavel = 100; // minimo para variáveis dinâmicas
+		int maxVariavel = 200; // maximo para ...
+		int tamanho_vetor = 1000; // vetor de requisições
+		int limiteMinOcupacao = 20; // Limite minimo para ocupação da heap
+		int limiteMaxOcupacao = 80; // Limite maximo para ...
+		int limiteFragmentacao = 80; // indice de fragmentação
 
 		Heap userHeap = new Heap(tamanhoHeap);
 		AnalisadorDeMemoria analisadorMemoria = new AnalisadorDeMemoria(tamanhoHeap, limiteMaxOcupacao, limiteMinOcupacao, limiteFragmentacao, userHeap);
@@ -36,7 +37,7 @@ public class Main
 		System.out.println ("\nAlocações a serem feitas: " + totalDeAlocacoes);
 		analisadorMemoria.imprimeBuracos();
 		for (int k = 0; geradorReq.getReqGeradas() < totalDeAlocacoes; k ++) {
-
+			tempoI = System.currentTimeMillis();
 			System.out.println ("\n -> Na iteração " + k + ":\n");
 
 			// cria requisições novas, inserindo-as no vetor de requisições
@@ -57,10 +58,15 @@ public class Main
 			// analisador de memória é chamado, afim de monitorar estatísticas, atualizar tabela de buracos, etc
 			analisadorMemoria.analisarMemoria(); 
 			analisadorMemoria.imprimeBuracos();
+			tempoF = System.currentTimeMillis();
+			tempoR = tempoF - tempoI;
+			System.out.println("Tempo: " + tempoR  + "s");
+			tempoT += tempoR;
 		}
-		reader.close();
+		//reader.close();
 		System.out.println ("\nTodas as alocações foram realizadas:\n");
 		System.out.println ("Chamadas ao desalocador: " + analisadorMemoria.getDesalocacoesFeitas());
+		System.out.println ("Tempo Total: "+ tempoT + "ms");
 	}
 
 	// retorna um número aleatório, dentro do intervalo especificado

@@ -28,6 +28,10 @@ public class Requisicao {
        return variavel;
    }
 
+   public int getTamanho(){
+       return tamanho;
+   }
+
    public int getIdentificador(){
        return identificador;
    } 

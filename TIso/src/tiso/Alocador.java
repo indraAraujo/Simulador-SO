@@ -8,17 +8,19 @@ package tiso;
 
 import java.util.ArrayList;
 
+import tiso.trheads.AnalisadorDeMemoriaTrhead;
+
 public class Alocador
 {
-	private int tamanhoHeap;
+	//private int tamanhoHeap;
 	private Heap heap;
-	private AnalisadorDeMemoria analisador;
+	private AnalisadorDeMemoriaTrhead analisador;
 	private ArrayList<Variavel> controle = new ArrayList<>();
 
 	//Construtor da classe.
-	public Alocador (int tamanhoHeap, Heap heap, AnalisadorDeMemoria analisador)
+	public Alocador (int tamanhoHeap, Heap heap, AnalisadorDeMemoriaTrhead analisador)
 	{
-		this.tamanhoHeap = tamanhoHeap;
+		//this.tamanhoHeap = tamanhoHeap;
 		this.heap = heap;
 		this.analisador = analisador;
 		analisador.setControle(controle);
@@ -37,7 +39,7 @@ public class Alocador
 			variavel_alocada.setRegTamanho((inicio + r.tamanho - 1));
 			controle.add (variavel_alocada);
 			for (int i = 0; i < r.tamanho; i++)
-				heap.addHeap (1, inicio + i);
+				heap.addHeap ('a', inicio + i);
 		}
 
 		analisador.atualizarBuracos();

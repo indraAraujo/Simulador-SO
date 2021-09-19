@@ -1,0 +1,21 @@
+[33m2e68696[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mTrheads[m[33m)[m heap vetor de char
+[33m2806391[m - variavel alocada e alocador
+[33m0ac70a9[m alteracoes em todas os arquivos
+[33mcc33f27[m Merge pull request #1 from trbenfica/versao_funcional
+[33mfe4aa54[m Altera classes existentes e adiciona novas, deixando funcional
+[33mc82c2de[m Merge branch 'main' of https://github.com/indraAraujo/Simulador-SO
+[33m81db15a[m desalocador e gerador de requisitos
+[33med7b166[m desalocador e gerador de requisitos
+[33m08c708f[m getHeap e showHeap
+[33m9742e21[m heap alterada
+[33me7efb35[m Revisar
+[33m190e886[m feat: teste vetor requisicao
+[33mdace001[m Update Heap.java
+[33m22a3f9b[m fix: ajustes de alguns erros
+[33m3dd6f63[m vetor de requisicoes
+[33mda2a7d6[m Add files via upload
+[33m07ff9eb[m Add files via upload
+[33m70a6fe3[m Add files via upload
+[33m6e515e7[m por Indra
+[33m5f1484a[m 
+[33m6537e4d[m Create README.md
