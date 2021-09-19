@@ -37,7 +37,7 @@ public class Alocador
 			variavel_alocada.setRegTamanho((inicio + r.tamanho - 1));
 			controle.add (variavel_alocada);
 			for (int i = 0; i < r.tamanho; i++)
-				heap.addHeap (1, inicio + i);
+				heap.addHeap ('1', inicio + i);
 		}
 
 		analisador.atualizarBuracos();

@@ -1,11 +1,37 @@
 package test;
 
-import tiso.GeradorDeRequisitos;
-import tiso.VetorRequisicoes;
-
+/*
+*   Conjunto de testes automatizados e manuais para o simulador
+*/
 public class Testes {
     public static void main(String[] args){
-       VetorRequisicoesTest vetor_requisicoes = new VetorRequisicoesTest();
-       vetor_requisicoes.inserir();
-    }
+
+        //*------------------------ TESTES UNITÁRIOS ---------------------------------------
+
+        //CLASSE DE TESTE PARA O VETOR DE REQUISIÇÕES
+        VetorRequisicoesTest vetor_requisicoes = new VetorRequisicoesTest();
+         vetor_requisicoes.inserir();
+         vetor_requisicoes.remover();
+
+         //CLASSE DE TESTE PARA A HEAP
+        HeapTest heap = new HeapTest();
+        heap.inserir('i', 56);
+        heap.imprimir();
+        heap.remover(56);
+        heap.imprimir();
+        
+        //CLASSE DE TESTE PARA A VARIAVEL
+        VariavelTest variavel = new VariavelTest();
+        variavel.registrador_base(56);
+        variavel.registrador_tamanho(56);
+        variavel.conteudo();
+        variavel.tamanho();
+        variavel.imprimir();
+        
+        //CLASSSE DE TESTE PARA A REQUISIÇÃO
+        RequisicaoTest requisicao = new RequisicaoTest();
+        requisicao.getVariavel();
+        requisicao.identificador(0);
+        requisicao.imprimir();
+     }
 }

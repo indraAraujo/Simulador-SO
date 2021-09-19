@@ -1,7 +1,6 @@
 package test;
 
 import tiso.GeradorDeRequisitos;
-import tiso.Requisicao;
 import tiso.VetorRequisicoes;
 
 public class VetorRequisicoesTest {
@@ -19,6 +18,7 @@ public class VetorRequisicoesTest {
         vetorRequisicoes.inserir(gerador.gerarRequisicao());
         vetorRequisicoes.inserir(gerador.gerarRequisicao());
         vetorRequisicoes.inserir(gerador.gerarRequisicao());
+        vetorRequisicoes.getVetor();
 
     }
 
@@ -27,6 +27,7 @@ public class VetorRequisicoesTest {
         vetorRequisicoes.remover();
         vetorRequisicoes.remover();
         vetorRequisicoes.remover();
+        vetorRequisicoes.getVetor();
         vetorRequisicoes.getVetor();
     }
    
