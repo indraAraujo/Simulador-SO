@@ -1,5 +1,7 @@
 package test;
 
+import tiso.Variavel;
+
 /*
 *   Conjunto de testes automatizados e manuais para o simulador
 */
@@ -33,5 +35,11 @@ public class Testes {
         requisicao.getVariavel();
         requisicao.identificador(0);
         requisicao.imprimir();
+
+        //CLASSE DE TESTE PARA DESALOCADOR DE MEMÓRIA
+        DesalocadorDeMemoriaTest desalocadortest = new DesalocadorDeMemoriaTest();
+        Variavel variavel2 = new Variavel(89, "i");
+        desalocadortest.desalocarVartest(variavel2);
+
      }
 }
