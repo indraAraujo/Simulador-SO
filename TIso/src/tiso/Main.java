@@ -22,7 +22,8 @@ public class Main
 		GeradorDeRequisitos geradorReq = new GeradorDeRequisitos(minVariavel, maxVariavel);
 		Alocador alocador = new Alocador (tamanhoHeap, userHeap, analisadorMemoria);
 
-		/* Obs: na versão sequencial, há um loop pra simular um funcionamento concorrente;
+		/* 
+		* Obs: na versão sequencial, há um loop pra simular um funcionamento concorrente;
 		 * assim, as coisas vão acontecendo de forma intercalada, permitindo validar o
 		 * funcionamento do desalocador, dos geradores de estatística, de um eventual compactador,
 		 * etc. A quantidade de requisições gerada e processada numa iteração é arbitrária, devendo
@@ -35,6 +36,7 @@ public class Main
 
 		System.out.println ("\nAlocações a serem feitas: " + totalDeAlocacoes);
 		analisadorMemoria.imprimeBuracos();
+		long timeI = System.nanoTime();
 		for (int k = 0; geradorReq.getReqGeradas() < totalDeAlocacoes; k ++) {
 
 			System.out.println ("\n -> Na iteração " + k + ":\n");
@@ -58,6 +60,8 @@ public class Main
 			analisadorMemoria.analisarMemoria(); 
 			analisadorMemoria.imprimeBuracos();
 		}
+		long timeF = System.nanoTime();
+		System.out.println("Tempo de execução: " + (timeF-timeI)/1000000);
 		reader.close();
 		System.out.println ("\nTodas as alocações foram realizadas:\n");
 		System.out.println ("Chamadas ao desalocador: " + analisadorMemoria.getDesalocacoesFeitas());

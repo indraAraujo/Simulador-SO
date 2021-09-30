@@ -1,23 +1,34 @@
 package tiso;
+
+import java.util.Random;
 /**
  * 
  * @author WillianS
  */
 
 public class Variavel {
-    private String conteudo; //conjunto de caracteres ou instrução 
+    private int cod; // como vai gerar esse código?
+    private String identificador; //conjunto de caracteres ou instrução 
     private int tam; //Tamanho na memória 
     private int regBase; //registrador que indica inicio do bloco
     private int regTamanho; //tamanho para ser acrescido no Base e encontrar final do bloco na memória.
 
-    public Variavel(int tm, String conteudo){
+    public Variavel(int tm, String identificador){
         this.tam = tm;
-	    this.conteudo = conteudo;
+	this.identificador = identificador;
     }
 
-    public void setRegBase(int rgB){
+    public void setRegBase(int rgB, int rgF){
         this.regBase = rgB;
+        this.regTamanho = rgF;
+    }
+    
+    public void setCod(int cd){
+        this.cod = cd;
+    }
 
+    public int getCod(){
+        return cod;
     }
 
     public int getTam(){
@@ -28,18 +39,11 @@ public class Variavel {
         return regBase;
     }
 
-    public void setRegTamanho(int fim){
-        regTamanho = fim;
-    }
     public int getRegTamanho(){
         return regTamanho;
     }
 
-    public String getConteudo(){
-        return conteudo;
-    }
-
-    public String toString(){
-        return "\n VARIAVEL ----  \n " + conteudo + "\n Registrador Base -> " + regBase + "\n Registrador Limite -> " + regTamanho;
+    public String getIdentificador(){
+        return identificador;
     }
 }

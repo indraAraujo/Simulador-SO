@@ -1,3 +1,4 @@
+/*
 package test;
 
 import tiso.Variavel;
@@ -5,6 +6,7 @@ import tiso.Variavel;
 /*
 *   Conjunto de testes automatizados e manuais para o simulador
 */
+/*
 public class Testes {
     public static void main(String[] args){
 
@@ -42,4 +44,6 @@ public class Testes {
         desalocadortest.desalocarVartest(variavel2);
 
      }
-}
+    }
+
+*/

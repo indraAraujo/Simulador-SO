@@ -1,4 +1,4 @@
-package test;
+/*package test;
 
 import tiso.Requisicao;
 import tiso.Variavel;
@@ -40,3 +40,4 @@ public class RequisicaoTest{
   }
 }
 
+*/

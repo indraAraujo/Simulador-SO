@@ -1,4 +1,4 @@
-package test;
+/*package test;
 
 import tiso.Heap;
 
@@ -36,4 +36,4 @@ public class HeapTest{
     heap.showHeap();
   }
   
-}
+}*/

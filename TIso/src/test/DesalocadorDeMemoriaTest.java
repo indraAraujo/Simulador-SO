@@ -1,4 +1,4 @@
-package test;
+/*package test;
 
 import tiso.DesalocadorDeMemoria;
 import tiso.Heap;
@@ -35,3 +35,4 @@ public class DesalocadorDeMemoriaTest {
     
     
 }
+*/

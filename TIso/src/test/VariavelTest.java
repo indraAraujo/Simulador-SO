@@ -1,4 +1,4 @@
-package test;
+/*package test;
 
 import tiso.Variavel;
 
@@ -57,4 +57,4 @@ public class VariavelTest{
       System.out.println("Teste Impressão - Variavel.....");
       System.out.println(variavel.toString());
     }
-}
+}*/
