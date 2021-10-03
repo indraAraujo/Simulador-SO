@@ -43,13 +43,19 @@ public class Testes {
         DesalocadorDeMemoriaTest desalocadortest = new DesalocadorDeMemoriaTest();
         VariavelAlocada variavel2 = new VariavelAlocada(0, 5, "1");
         desalocadortest.desalocarVartest(variavel2);
-*/
+
         //CLASSE DE TESTE PARA GERADOR DE REQUISITOS
         GeradorDeRequisitosTest geradorDeRequisitosTest = new GeradorDeRequisitosTest();
-
         geradorDeRequisitosTest.testGerarRequisicao();
         geradorDeRequisitosTest.testGerarRequisicoes(10);
   
+*/
+        BuracoTest holeTest = new BuracoTest();
+        holeTest.getInicioTest();
+        holeTest.getFimTest();
+        holeTest.getTamanhoTest();
+
+        
 
 
      }
