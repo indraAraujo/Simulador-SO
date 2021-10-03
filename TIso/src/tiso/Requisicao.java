@@ -26,6 +26,9 @@ public class Requisicao {
     public String getIdentificador(){
         return identificador;
     } 
+    public String toString(){
+        return identificador;
+    }
  }
  
  

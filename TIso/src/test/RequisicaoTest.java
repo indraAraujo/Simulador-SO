@@ -1,17 +1,17 @@
-/*package test;
+package test;
 
 import tiso.Requisicao;
 import tiso.Variavel;
 
 public class RequisicaoTest{
-  Requisicao requisicao = new Requisicao(10, 0, "ejiolepsjk");
+  Requisicao requisicao = new Requisicao(10, "ejiolepsjk");
   
 
   //Teste de retornar a variavel inserida na requisição
   public void getVariavel(){
     System.out.println("Teste Variavel - Requisição.....");
     Variavel temp = new Variavel(10, "ejiolepsjk");
-    if(temp.getConteudo()==requisicao.getVariavel().getConteudo()){
+    if(temp.getIdentificador()==requisicao.getVariavel().getIdentificador()){
       System.out.println("Sucesso");
     }else{
       System.out.println("Falha");
@@ -23,7 +23,7 @@ public class RequisicaoTest{
 
 
   // Teste do identificador
-  public void identificador(int valor){
+  public void identificador(String valor){
     System.out.println("Teste Identificador - Requisicao.....");
     requisicao.setIdentificador(valor);
     if(valor == requisicao.getIdentificador()){
@@ -40,4 +40,3 @@ public class RequisicaoTest{
   }
 }
 
-*/

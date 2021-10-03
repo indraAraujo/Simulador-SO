@@ -1,4 +1,4 @@
-/*package test;
+package test;
 
 import tiso.Heap;
 
@@ -10,7 +10,7 @@ public class HeapTest{
   public void inserir(char caracter, int indice){
      System.out.println("Teste Inserção- Heap....");
       heap.addHeap(caracter, indice);
-      char[] temp = heap.getHeap();
+      int[] temp = heap.getHeap();
       if(temp[indice] == caracter ){
          System.out.println("Sucesso");
       }else{
@@ -22,8 +22,8 @@ public class HeapTest{
   public void remover( int indice){
      System.out.println("Teste Remoção- Heap....");
       heap.removeHeap(indice);
-      char[] temp = heap.getHeap();
-      if(temp[indice] == '0' ){
+      int[] temp = heap.getHeap();
+      if(temp[indice] == 0 ){
          System.out.println("Sucesso");
       }else{
          System.out.println("Falha");
@@ -36,4 +36,4 @@ public class HeapTest{
     heap.showHeap();
   }
   
-}*/
+}

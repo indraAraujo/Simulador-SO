@@ -22,6 +22,9 @@ public class Variavel {
         this.regBase = rgB;
         this.regTamanho = rgF;
     }
+   // public void setRegTamanho(int rgF){
+   //     this.regTamanho = rgF;
+    //}
     
     public void setCod(int cd){
         this.cod = cd;
@@ -46,4 +49,8 @@ public class Variavel {
     public String getIdentificador(){
         return identificador;
     }
+    public String toString(){
+        return identificador;
+    }
+
 }
