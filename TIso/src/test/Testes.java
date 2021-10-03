@@ -13,7 +13,7 @@ public class Testes {
         //*------------------------ TESTES UNITÁRIOS ---------------------------------------
 
         //CLASSE DE TESTE PARA O VETOR DE REQUISIÇÕES
-       VetorRequisicoesTest vetor_requisicoes = new VetorRequisicoesTest();
+    /*   VetorRequisicoesTest vetor_requisicoes = new VetorRequisicoesTest();
          vetor_requisicoes.inserir();
          vetor_requisicoes.remover();
          
@@ -43,8 +43,12 @@ public class Testes {
         DesalocadorDeMemoriaTest desalocadortest = new DesalocadorDeMemoriaTest();
         VariavelAlocada variavel2 = new VariavelAlocada(0, 5, "1");
         desalocadortest.desalocarVartest(variavel2);
-
+*/
         //CLASSE DE TESTE PARA GERADOR DE REQUISITOS
+        GeradorDeRequisitosTest geradorDeRequisitosTest = new GeradorDeRequisitosTest();
+
+        geradorDeRequisitosTest.testGerarRequisicao();
+        geradorDeRequisitosTest.testGerarRequisicoes(10);
   
 
 
