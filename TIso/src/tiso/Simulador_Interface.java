@@ -9,9 +9,6 @@ import javax.swing.JRadioButton;
 import tiso.Threads.AlocadorTrhead;
 import tiso.Threads.AnalisadorDeMemoriaThread;
 import tiso.Threads.GeradorDeRequisitosTrhead;
-import tiso.Threads.HeapThread;
-import tiso.Threads.Semaforo;
-import tiso.Threads.VetorRequisicoesThread;
 
 
 
@@ -425,12 +422,11 @@ public class Simulador_Interface extends javax.swing.JFrame implements ActionLis
             var_qnt = Integer.valueOf(qnt_var.getText());
             System.out.println(var_qnt);
             if(versao==1){
-                output.escrever("VERSÃO SEQUENCIAL");
                 Heap userHeap = new Heap(heap_tam);
                 AnalisadorDeMemoria analisadorMemoria = new AnalisadorDeMemoria(heap_tam, ocupacao_max, ocupacao_min, frag, userHeap);
-                VetorRequisicoes vetor_requisicoes = new VetorRequisicoes(tam_vetor);
+                VetorRequisicoes vetor_requisicoes = new VetorRequisicoes();
                 GeradorDeRequisitos geradorReq = new GeradorDeRequisitos(var_tamMin, var_tamMin);
-                Alocador alocador = new Alocador (heap_tam, userHeap, analisadorMemoria);
+                Alocador alocador = new Alocador (userHeap, analisadorMemoria);
 
                 /* 
                 * Obs: na versão sequencial, há um loop pra simular um funcionamento concorrente;
@@ -444,13 +440,8 @@ public class Simulador_Interface extends javax.swing.JFrame implements ActionLis
                 int maxReqPorIteracao = 3; // quant. máxima de requisições geradas por iteração;
                 int maxProcPorIteracao = maxReqPorIteracao / 2; // quant. máxima de requisições processadas por iteração
 
-                output.escrever("\nAlocações a serem feitas: " + var_qnt);
-                
-                analisadorMemoria.imprimeBuracos();
                 long timeI = System.nanoTime();
                 for (int k = 0; geradorReq.getReqGeradas() < var_qnt; k ++) {
-
-                    output.escrever("\n -> Na iteração " + k + ":\n");
 
                     // cria requisições novas, inserindo-as no vetor de requisições
                     Requisicao[] tmp = geradorReq.gerarRequisicoes(genRandom(1, maxReqPorIteracao));
@@ -461,37 +452,29 @@ public class Simulador_Interface extends javax.swing.JFrame implements ActionLis
                     int j;
                     for (j = 0; j < genRandom(1, maxProcPorIteracao); j++) {
                         if (alocador.processarRequisicao (vetor_requisicoes.remover()) == false) {
-                            output.escrever("\tNão foi possível realizar uma alocação");
                             break;
                         }
                     }
-                    output.escrever("\tForam realizadas " + j + " alocações");
 
                     // analisador de memória é chamado, afim de monitorar estatísticas, atualizar tabela de buracos, etc
                     analisadorMemoria.analisarMemoria(); 
-                    analisadorMemoria.imprimeBuracos();
                 }
                 long timeF = System.nanoTime();
                 float tempo_total = (timeF-timeI)/1000000;
-                output.escrever("Tempo de execução: " + (timeF-timeI)/1000000);
                 tempoTotal.setText(" "+tempo_total);
-                output.escrever("\nTodas as alocações foram realizadas:\n");
-                output.escrever("Chamadas ao desalocador: " + analisadorMemoria.getDesalocacoesFeitas());
             
 
             // retorna um número aleatório, dentro do intervalo especificado
                 versao=0;
 
             }else{
-                output.escrever("VERSÃO PARALELA");
-                 long tempoI, tempoF, tempoR, tempoT;
+                 long tempoI, tempoF, tempoR;
                  GeradorDeRequisitosTrhead geradorReq = new GeradorDeRequisitosTrhead(var_tamMin, var_tamMin, var_qnt, dormir);
-                 AlocadorTrhead malloc = new AlocadorTrhead(heap_tam, dormir, var_qnt);
+                 AlocadorTrhead malloc = new AlocadorTrhead( dormir, var_qnt);
                  AnalisadorDeMemoriaThread analiser = new AnalisadorDeMemoriaThread();
             
                
                     tempoI = System.nanoTime();
-                    output.escrever("Tempo I: " + (tempoI));
                     Thread ger_Req_Thread = new Thread(geradorReq);
                     Thread aloc_Thread = new Thread(malloc);
                     Thread analiser_Thread = new Thread(analiser);
@@ -509,14 +492,7 @@ public class Simulador_Interface extends javax.swing.JFrame implements ActionLis
             
                     tempoF = (System.nanoTime());
                     tempoR = (tempoF - tempoI)/1000000;
-                    output.escrever("Tempo: "+ (int)tempoR + " ms");
-                    output.escrever("Tempo de trabalho do gerador: "+ t_Gerador + " ms");
-                    output.escrever("Tempo de trabalho do alocador: "+ t_Alocador + " ms");
-                    output.escrever("Tempo de trabalho do desalocador: "+ (t_Desalocador) + " ms");
-                    output.escrever("Tempo de trabalho do analisador: "+ t_Analisador + " ms");
-                    tempoT = t_Alocador+t_Analisador+t_Desalocador+t_Gerador;
                     tempoTotal.setText(" "+tempoR);
-                    output.escrever("Somatório dos tempos: "+tempoT);
             
                 
                 versao=0;

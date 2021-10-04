@@ -1,37 +1,21 @@
 package tiso;
-
-import java.util.Random;
 /**
- * 
- * @author WillianS
+ * Determina os atributos que a variável precisa ter
  */
 
 public class Variavel {
-    private int cod; // como vai gerar esse código?
-    private String identificador; //conjunto de caracteres ou instrução 
+    private String conteudo; //conjunto de caracteres ou instrução 
     private int tam; //Tamanho na memória 
     private int regBase; //registrador que indica inicio do bloco
     private int regTamanho; //tamanho para ser acrescido no Base e encontrar final do bloco na memória.
 
-    public Variavel(int tm, String identificador){
+    public Variavel(int tm, String conteudo){
         this.tam = tm;
-	this.identificador = identificador;
+	    this.conteudo = conteudo;
     }
 
-    public void setRegBase(int rgB, int rgF){
+    public void setRegBase(int rgB){
         this.regBase = rgB;
-        this.regTamanho = rgF;
-    }
-   // public void setRegTamanho(int rgF){
-   //     this.regTamanho = rgF;
-    //}
-    
-    public void setCod(int cd){
-        this.cod = cd;
-    }
-
-    public int getCod(){
-        return cod;
     }
 
     public int getTam(){
@@ -46,11 +30,18 @@ public class Variavel {
         return regTamanho;
     }
 
-    public String getIdentificador(){
-        return identificador;
+    public void setRegTamanho(int fim){
+        regTamanho=fim;
+    }
+    public String getConteudo(){
+        return conteudo;
+    }
+    public char[] gerCont_Char(){
+        char[] con = conteudo.toCharArray();
+        return con;
     }
     public String toString(){
-        return identificador;
+        return  "\n VARIAVEL ---- \n Tamanho -> " + tam + "\n " + conteudo;
     }
 
 }

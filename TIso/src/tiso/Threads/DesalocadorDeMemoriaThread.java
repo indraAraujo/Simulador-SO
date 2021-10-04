@@ -1,6 +1,7 @@
 package tiso.Threads;
 
 import tiso.Output;
+import tiso.Variavel;
 
 public class DesalocadorDeMemoriaThread{
 	private long tempoR, tempoI, tempoF;
@@ -11,7 +12,7 @@ public class DesalocadorDeMemoriaThread{
 	}
 
 	//Desalocação de uma variável da heap.
-	public void desalocarVar (VariavelThread variavel){
+	public void desalocarVar (Variavel variavel){
 		tempoI = System.nanoTime();
 		// MainTrhead.gestorHeap.acquire();
 		
@@ -21,7 +22,6 @@ public class DesalocadorDeMemoriaThread{
 				MainThread.userHeap.removeHeap(variavel.getRegBase() + i);
 			}
 		}
-		output.escrever("Desalocador");
 		tempoF = System.nanoTime();
 		tempoR = ((tempoF - tempoI)/1000000);
 		MainThread.t_Desalocador += tempoR;

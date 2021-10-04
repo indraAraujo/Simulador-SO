@@ -9,7 +9,7 @@ public class VetorRequisicoesTest {
     GeradorDeRequisitos gerador = new GeradorDeRequisitos(tamanho_maximo_variavel, tamanho_minimo_variavel);
     //TESTE DO VETOR DE REQUISIÇÕES
     int tamanho_vetor = 100;
-    VetorRequisicoes vetorRequisicoes = new VetorRequisicoes(tamanho_vetor);
+    VetorRequisicoes vetorRequisicoes = new VetorRequisicoes();
 
     public void inserir(){
          //Inserir no vetor de requisições uma requisição normal

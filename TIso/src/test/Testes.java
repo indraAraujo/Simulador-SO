@@ -2,7 +2,6 @@ package test;
 
 import tiso.Heap;
 import tiso.Variavel;
-import tiso.VariavelAlocada;
 
 /*
 *   Conjunto de testes automatizados e manuais para o simulador
@@ -58,7 +57,7 @@ public class Testes {
 */
         Heap heap = new Heap(200);
         for(int i=0; i<89; i++){
-            heap.addHeap(42, i);
+            heap.addHeap('x', i);
         }
         AnalisadorTest analisador = new AnalisadorTest(heap);
         analisador.first_fit();

@@ -18,9 +18,9 @@ public class Main
 
 		Heap userHeap = new Heap(tamanhoHeap);
 		AnalisadorDeMemoria analisadorMemoria = new AnalisadorDeMemoria(tamanhoHeap, limiteMaxOcupacao, limiteMinOcupacao, limiteFragmentacao, userHeap);
-		VetorRequisicoes vetor_requisicoes = new VetorRequisicoes(tamanho_vetor);
+		VetorRequisicoes vetor_requisicoes = new VetorRequisicoes();
 		GeradorDeRequisitos geradorReq = new GeradorDeRequisitos(minVariavel, maxVariavel);
-		Alocador alocador = new Alocador (tamanhoHeap, userHeap, analisadorMemoria);
+		Alocador alocador = new Alocador (userHeap, analisadorMemoria);
 
 		/* 
 		* Obs: na versão sequencial, há um loop pra simular um funcionamento concorrente;
@@ -34,12 +34,9 @@ public class Main
 		int maxReqPorIteracao = 3; // quant. máxima de requisições geradas por iteração;
 		int maxProcPorIteracao = maxReqPorIteracao / 2; // quant. máxima de requisições processadas por iteração
 
-		System.out.println ("\nAlocações a serem feitas: " + totalDeAlocacoes);
-		analisadorMemoria.imprimeBuracos();
 		long timeI = System.nanoTime();
 		for (int k = 0; geradorReq.getReqGeradas() < totalDeAlocacoes; k ++) {
 
-			System.out.println ("\n -> Na iteração " + k + ":\n");
 
 			// cria requisições novas, inserindo-as no vetor de requisições
 			Requisicao[] tmp = geradorReq.gerarRequisicoes(Main.genRandom(1, maxReqPorIteracao));
@@ -50,21 +47,16 @@ public class Main
 			int j;
 			for (j = 0; j < Main.genRandom(1, maxProcPorIteracao); j++) {
 				if (alocador.processarRequisicao (vetor_requisicoes.remover()) == false) {
-					System.out.println ("\tNão foi possível realizar uma alocação");
 					break;
 				}
 			}
-			System.out.println("\tForam realizadas " + j + " alocações");
 
 			// analisador de memória é chamado, afim de monitorar estatísticas, atualizar tabela de buracos, etc
 			analisadorMemoria.analisarMemoria(); 
-			analisadorMemoria.imprimeBuracos();
 		}
 		long timeF = System.nanoTime();
 		System.out.println("Tempo de execução: " + (timeF-timeI)/1000000);
 		reader.close();
-		System.out.println ("\nTodas as alocações foram realizadas:\n");
-		System.out.println ("Chamadas ao desalocador: " + analisadorMemoria.getDesalocacoesFeitas());
 	}
 
 	// retorna um número aleatório, dentro do intervalo especificado

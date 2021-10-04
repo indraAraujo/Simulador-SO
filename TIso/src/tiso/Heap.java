@@ -1,17 +1,15 @@
 package tiso;
 
 public class Heap {
-	
-	private int heap[];
+	private char heap[];
 	private int tamanhoHeap;//asdasd
-	
+	//Construtor da classe.
 	public Heap(int tamanhoHeap) {
-		this.heap = new int[tamanhoHeap];
+		this.heap = new char[tamanhoHeap];
 		this.tamanhoHeap = tamanhoHeap;
-		
-		for(int i=0; i<tamanhoHeap; i++) {
+		for(int i = 0; i<tamanhoHeap; i++) {
 			
-			heap[i]= 0;
+			heap[i]='0';
 		}
 		
 	}
@@ -22,68 +20,43 @@ public class Heap {
 		this.tamanhoHeap = tamanhoHeap;
 	}
 	
-	public void addHeap(int partVariavel, int index) {
+	//Adição de uma nova variável na Heap
+	public void addHeap(char partVariavel, int index) {
 		
 		heap[index] = partVariavel;
 		
 		
 	}
 
-	public int consult (int i)
-	{
+	//Consulta um campo específico na Heap.
+	public int consult (int i){
 		return heap[i];
 	}
 
-	public int removeHeap(int index) {
+	//Remoção de uma variável da Heap.
+	public char removeHeap(int index) {
 		
-		int temp = -1;
-		
-		if(heap == null)
-		return temp;
-		
+		char temp = '0';
+		if(heap == null) return temp;
 		else {
 			temp = heap[index];
-			heap[index] = 0;
-			
+			heap[index] = '0';
 		}
-		
-		
 		return temp;
-		
 	}
 	
-	public int[] encontrarCampoVazio() {
-		
-		int indexs[] = new int[tamanhoHeap];
-		int j = 0;
-		
-		
-		if(heap == null)
-			return null;
-		
-		else {
-			for(int i=0; i<tamanhoHeap; i++) {
-				int temp;
-				temp = heap[i];
-				if(temp == 0) {
-					indexs[j] = i;
-					j++;
-					
-				}
-			}
-		}
-		
-		return indexs;
-	}
-
-	public int[] getHeap(){
+	//Retorno da Heap no estado atual.
+	public char[] getHeap(){
 		return heap;
 	}
 
+	//Impressão da Heap.
 	public void showHeap(){
 		for(int i=0; i<tamanhoHeap; i++){
-			System.out.println(heap[i]+"\n");
+			System.out.print(heap[i] + " ");
+			if (i % 40 == 0) 
+				System.out.print("\n");
 		}
+		System.out.println("\n");
 	}
-	
 }

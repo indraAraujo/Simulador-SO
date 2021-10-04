@@ -1,21 +1,21 @@
 package tiso;
-
 /**
- *
- * @author indra
- */
+* Objeto que representa a requisição
+*
+*/
 public class Requisicao {
-    String identificador;
-    int tamanho;
-    Variavel variavel;
+    int identificador;
+    int tamanho; //tamanho da variavel
+   Variavel variavel;
  
-    public Requisicao(int tm, String id){
-     this.tamanho = tm;
-     this.identificador = id;
-     variavel = new Variavel(tm, id); // ver se o tamanho da variavel vai ser o mesmo da requisição.
+    //Construtor da classe.
+    public Requisicao(int tm, int id, String conteudo_variavel){
+        this.tamanho = tm;
+        this.identificador = id;
+        variavel = new Variavel(tm, conteudo_variavel);
     }
  
-    public void setIdentificador(String id){
+    public void setIdentificador(int id){
         this.identificador = id;
     }
  
@@ -23,12 +23,16 @@ public class Requisicao {
         return variavel;
     }
  
-    public String getIdentificador(){
+    public int getTamanho(){
+        return tamanho;
+    }
+ 
+    public int getIdentificador(){
         return identificador;
     } 
+ 
     public String toString(){
-        return identificador;
+        return " \n REQUISIÇÃO " + identificador + " ---- \n tamanho -> " + tamanho + variavel.toString();
     }
- }
- 
- 
+
+}

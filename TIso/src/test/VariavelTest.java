@@ -6,9 +6,9 @@ public class VariavelTest{
     Variavel variavel = new Variavel(10, "kloplkjhuj");
 
     //Teste do registrador base
-    public void registrador_base(int valor, int valor2){
+    public void registrador_base(int valor){
       System.out.println("Teste Registrador Base - Variavel.....");
-      variavel.setRegBase(valor, valor2);
+      variavel.setRegBase(valor);
       if(valor == variavel.getRegBase()){
         System.out.println("Sucesso");
       }else{
@@ -19,9 +19,9 @@ public class VariavelTest{
 
 
     //teste do registrador tamanho
-    public void registrador_tamanho(int valor, int valor2){
+    public void registrador_tamanho(int valor){
       System.out.println("Teste Registrador tamanho - Variavel.....");
-      variavel.setRegBase(valor, valor2);
+      variavel.setRegTamanho(valor);
     
       if(valor == variavel.getRegTamanho()){
          System.out.println("Sucesso");
@@ -34,7 +34,7 @@ public class VariavelTest{
     //Teste de conteúdo
     public void conteudo(){
       System.out.println("Teste Conteudo - Variavel.....");
-      if("kloplkjhuj" == variavel.getIdentificador()){
+      if("kloplkjhuj" == variavel.getConteudo()){
         System.out.println("Sucesso");
       }else{
         System.out.println("Falha");

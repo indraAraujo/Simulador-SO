@@ -2,6 +2,7 @@ package tiso.Threads;
 import java.util.Random;
 
 import tiso.Output;
+import tiso.Requisicao;
 
 
 public class GeradorDeRequisitosTrhead implements Runnable{
@@ -31,30 +32,24 @@ public class GeradorDeRequisitosTrhead implements Runnable{
 	//Geração do tamanho da variavel e instancia de uma nova requisição.
     @Override
     public void run() { //gerarRequisicao
-	    int counter = 0;
 
 	    while(req_geradas < total_reqs){
 		    tempoI = System.nanoTime();
-			counter ++;
 		    tamanho_variavel = (int)Math.floor(Math.random()*(max - min + 1) + min);
-		    RequisitosThread req = new RequisitosThread(tamanho_variavel, req_geradas, gerarConteudo());
+		    Requisicao req = new Requisicao(tamanho_variavel, req_geradas, gerarConteudo());
 		    req_geradas++;
 		    // MainTrhead.gestorVet.acquire();
 		    synchronized (MainThread.vetor_Req){
 			    controle = MainThread.vetor_Req.inserir(req);
-			    output.escrever("[Thread Gerador] Requisição inserida no vetor de requisições, counter: " + counter);
-		    }
+			  }
 		    //MainTrhead.gestorVet.release();
 		    if(controle){
 			    // sleep();
-			    output.escrever("[Thread Gerador] gerador dormiu:");
-		    }
+			}
 			tempoF = System.nanoTime();
 			tempoR = ((tempoF - tempoI)/1000000);
 			MainThread.t_Gerador += tempoR;
 	    }
-	    output.escrever("[Thread Gerador] Gerador finalizou. Total de Req_geradas: " + req_geradas);
-	    //MainTrhead.userHeap.showHeap();
 
 	}
 	public int getReqGeradas(){ return req_geradas;}

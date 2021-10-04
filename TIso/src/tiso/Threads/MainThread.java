@@ -1,5 +1,7 @@
 package tiso.Threads;
 
+import tiso.Heap;
+import tiso.VetorRequisicoes;
 
 public class MainThread {
 
@@ -14,17 +16,14 @@ public class MainThread {
 	public static int limiteMaxOcupacao = 80; // Limite maximo para ...
 	public static int limiteFragmentacao = 80; // indice de fragmentação
 	public static boolean terminou = false;
-	public static Semaforo gestorVet = new Semaforo();
-	public static Semaforo gestorHeap = new Semaforo();
-    public static HeapThread userHeap = new HeapThread(tamanhoHeap);
+    public static Heap userHeap = new Heap(tamanhoHeap);
     public static GeradorDeRequisitosTrhead geradorReq = new GeradorDeRequisitosTrhead(minVariavel, maxVariavel, totalDeAlocacoes, dormir);
-    public static VetorRequisicoesThread vetor_Req = new VetorRequisicoesThread(tamanho_vetor);
-	public static AlocadorTrhead malloc = new AlocadorTrhead(tamanhoHeap, dormir, totalDeAlocacoes);
+    public static VetorRequisicoes vetor_Req = new VetorRequisicoes();
+	public static AlocadorTrhead malloc = new AlocadorTrhead( dormir, totalDeAlocacoes);
 	public static AnalisadorDeMemoriaThread analiser = new AnalisadorDeMemoriaThread();
 
     public static void main(String[] args) throws InterruptedException{
 		tempoI = System.nanoTime();
-		System.out.println("Tempo I: " + (tempoI));
 		Thread ger_Req_Thread = new Thread(geradorReq);
 		Thread aloc_Thread = new Thread(malloc);
 		Thread analiser_Thread = new Thread(analiser);
@@ -43,12 +42,6 @@ public class MainThread {
 		tempoF = (System.nanoTime());
 		tempoR = (tempoF - tempoI)/1000000;
 		System.out.println("Tempo: "+ (int)tempoR + " ms");
-		System.out.println("Tempo de trabalho do gerador: "+ t_Gerador + " ms");
-		System.out.println("Tempo de trabalho do alocador: "+ t_Alocador + " ms");
-		System.out.println("Tempo de trabalho do desalocador: "+ (t_Desalocador) + " ms");
-		System.out.println("Tempo de trabalho do analisador: "+ t_Analisador + " ms");
-		tempoT = t_Alocador+t_Analisador+t_Desalocador+t_Gerador;
-		System.out.println("Somatório dos tempos: "+tempoT);
 
     }
 }

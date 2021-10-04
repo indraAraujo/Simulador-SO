@@ -1,7 +1,9 @@
 package tiso.Threads;
 import java.util.ArrayList;
 
+import tiso.Buraco;
 import tiso.Output;
+import tiso.Variavel;
 
 
 
@@ -12,8 +14,8 @@ public class AnalisadorDeMemoriaThread implements Runnable{
 	private int limiteFragmentacao;
 	private double taxaOcupacao;
 	private double taxaFragmentacao;
-	private ArrayList<BuracosThread> buracos;
-	private ArrayList<VariavelThread> controle;
+	private ArrayList<Buraco> buracos;
+	private ArrayList<Variavel> controle;
 	private int chamadasAoDesalocador;
 	private long tempoR, tempoI, tempoF;
 	Output output = new Output();
@@ -37,7 +39,7 @@ public class AnalisadorDeMemoriaThread implements Runnable{
 	public int primeiroEncaixe (int tamanho){
 		int retorno = -1;
 
-		for (BuracosThread i : buracos){
+		for (Buraco i : buracos){
 			if (i.getTamanho() >= tamanho){
 				retorno = i.getInicio();
 				return retorno; // pega o primeiro buraco
@@ -60,13 +62,7 @@ public class AnalisadorDeMemoriaThread implements Runnable{
 			MainThread.t_Analisador += tempoR;
 		}
 	}
-		/*public void analisarMemoria (){
-		//Análise da Taxa de Ocupação.
-		monitorTaxaOcupacao();
-		//Análise da Taxa de Fragmentação.
-		monitorFragmentacao();
-	}*/
-
+	
 	//Atualização das informações sobre os buracos na heap.
 	public void atualizarBuracos (){
 		this.buracos.clear();
@@ -81,7 +77,7 @@ public class AnalisadorDeMemoriaThread implements Runnable{
 						if(i + 1 >= tamanhoHeap) break;
 					}
 					int fim = i;
-					this.buracos.add (new BuracosThread (comeco, fim));
+					this.buracos.add (new Buraco(comeco, fim));
 					//imprimeBuracos();
 				}
 			}
@@ -91,7 +87,7 @@ public class AnalisadorDeMemoriaThread implements Runnable{
 	//Impressão da lista de buracos, para validação.
 	public void imprimeBuracos (){
 		output.escrever("\n\t# Buracos:\n");
-		for (BuracosThread i : buracos)
+		for (Buraco i : buracos)
 		output.escrever("\t\tTamanho: " + i.getTamanho() + ", começa na posição " + i.getInicio() + ", vai até " + i.getFim());
 	}
 
@@ -121,7 +117,7 @@ public class AnalisadorDeMemoriaThread implements Runnable{
 	//Calculo da Taxa de Ocupação.
 	public double calcularTaxaOcupacao(){
 		int memoria_livre = 0;
-		for (BuracosThread i : buracos){
+		for (Buraco i : buracos){
 			memoria_livre += i.getTamanho();
 		}
 		
@@ -144,9 +140,10 @@ public class AnalisadorDeMemoriaThread implements Runnable{
 	public void fragmentar(){
 		int ponteiro = 0;
 		synchronized(MainThread.userHeap){
-			for(VariavelThread v : controle){
+			for(Variavel v : controle){
 				char [] cont = v.gerCont_Char();
-				v.setRegBase(ponteiro, ponteiro + (ponteiro + v.getTam() - 1));
+				v.setRegBase(ponteiro);
+				v.setRegTamanho(ponteiro + (ponteiro + v.getTam() - 1));
 				for (int i = 0; i < v.getTam(); i++){
 					MainThread.userHeap.addHeap(cont[i], ponteiro + i);
 					ponteiro++;
@@ -155,7 +152,7 @@ public class AnalisadorDeMemoriaThread implements Runnable{
 			}
 		}
 	}
-		public void setControle(ArrayList<VariavelThread> c){
+		public void setControle(ArrayList<Variavel> c){
 		this.controle = c;
 	}
 

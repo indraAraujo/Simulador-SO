@@ -8,17 +8,15 @@ import java.util.ArrayList;
 
 public class Alocador
 {
-	private int tamanhoHeap;
 	private Heap heap;
 	private AnalisadorDeMemoria analisador;
-	private ArrayList<VariavelAlocada> controle = new ArrayList<VariavelAlocada>();
+	private ArrayList<Variavel> controle = new ArrayList<>();
 	Output output = new Output();
 
 
 
-	public Alocador (int tamanhoHeap, Heap heap, AnalisadorDeMemoria analisador)
+	public Alocador ( Heap heap, AnalisadorDeMemoria analisador)
 	{
-		this.tamanhoHeap = tamanhoHeap;
 		this.heap = heap;
 		this.analisador = analisador;
 		analisador.setControle(controle);
@@ -28,14 +26,18 @@ public class Alocador
 	// retorna true se tudo der certo, caso contrário, false
 	public boolean processarRequisicao (Requisicao r)
 	{
-		int inicio = analisador.primeiroEncaixe (r.tamanho);
+		int inicio = analisador.primeiroEncaixe (r.getTamanho());
 		boolean result = false;
 
 		if (inicio != -1) {
 			result = true;
-			controle.add (new VariavelAlocada(inicio, (inicio + r.tamanho - 1), r.identificador));
-			for (int i = 0; i < r.tamanho; i++)
-				heap.addHeap (1, inicio + i);
+			Variavel nova_variavel = r.getVariavel();
+			nova_variavel.setRegBase(inicio);
+			nova_variavel.setRegTamanho((inicio + r.getTamanho() - 1));
+			controle.add (nova_variavel);
+			char [] cont = nova_variavel.gerCont_Char();
+			for (int i = 0; i < r.getTamanho(); i++)
+				heap.addHeap (cont[i], inicio + i);
 		}
 
 		analisador.atualizarBuracos();

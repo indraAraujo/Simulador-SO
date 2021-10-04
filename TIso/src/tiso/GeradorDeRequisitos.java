@@ -12,6 +12,7 @@ public class GeradorDeRequisitos{
 	private int max; 
 	private int min; 
 	private int req_geradas;
+	private int tamanho_variavel;
 	Random gerador = new Random();
 	Output output = new Output();
 
@@ -23,8 +24,8 @@ public class GeradorDeRequisitos{
 
 	public Requisicao gerarRequisicao(){
 		// Requisicao req = new Requisicao(gerador.nextInt(max) + min);
-		int tam = (int)Math.floor(Math.random()*(max-min+1)+min);
-		Requisicao req = new Requisicao(tam, gerarIdentificador());
+		tamanho_variavel = (int)Math.floor(Math.random()*(max-min+1)+min);
+		Requisicao req = new Requisicao(tamanho_variavel, req_geradas, gerarConteudo());
 		req_geradas++;
 		return req; 
 	}
@@ -46,15 +47,13 @@ public class GeradorDeRequisitos{
 	}
 
 
-	// retorna uma string aleatória, de tamanho n; usada para o identificador da variável
-	private String gerarIdentificador ()
+	// retorna uma string aleatória, de tamanho n; usada para o conteudo da variável
+	private String gerarConteudo ()
 	{
-		int n = 3;
-
 		String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + "0123456789";
-		StringBuilder sb = new StringBuilder(n);
+		StringBuilder sb = new StringBuilder(tamanho_variavel);
 
-		for (int i = 0; i < n; i++) {
+		for (int i = 0; i < tamanho_variavel; i++) {
 			int index = (int)(AlphaNumericString.length() * Math.random());
 			sb.append(AlphaNumericString.charAt(index));
 		}

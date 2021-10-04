@@ -10,7 +10,7 @@ public class HeapTest{
   public void inserir(char caracter, int indice){
      System.out.println("Teste Inserção- Heap....");
       heap.addHeap(caracter, indice);
-      int[] temp = heap.getHeap();
+      char[] temp = heap.getHeap();
       if(temp[indice] == caracter ){
          System.out.println("Sucesso");
       }else{
@@ -22,7 +22,7 @@ public class HeapTest{
   public void remover( int indice){
      System.out.println("Teste Remoção- Heap....");
       heap.removeHeap(indice);
-      int[] temp = heap.getHeap();
+      char[] temp = heap.getHeap();
       if(temp[indice] == 0 ){
          System.out.println("Sucesso");
       }else{
