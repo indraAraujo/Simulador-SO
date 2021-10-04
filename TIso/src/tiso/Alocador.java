@@ -12,6 +12,8 @@ public class Alocador
 	private Heap heap;
 	private AnalisadorDeMemoria analisador;
 	private ArrayList<VariavelAlocada> controle = new ArrayList<VariavelAlocada>();
+	Output output = new Output();
+
 
 
 	public Alocador (int tamanhoHeap, Heap heap, AnalisadorDeMemoria analisador)

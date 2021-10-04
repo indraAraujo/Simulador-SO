@@ -1,6 +1,11 @@
 package tiso.Threads;
+
+import tiso.Output;
+
 public class DesalocadorDeMemoriaThread{
 	private long tempoR, tempoI, tempoF;
+	Output output = new Output();
+
 	public DesalocadorDeMemoriaThread(){
 		
 	}
@@ -16,7 +21,7 @@ public class DesalocadorDeMemoriaThread{
 				MainThread.userHeap.removeHeap(variavel.getRegBase() + i);
 			}
 		}
-		System.out.println("Desalocador");
+		output.escrever("Desalocador");
 		tempoF = System.nanoTime();
 		tempoR = ((tempoF - tempoI)/1000000);
 		MainThread.t_Desalocador += tempoR;

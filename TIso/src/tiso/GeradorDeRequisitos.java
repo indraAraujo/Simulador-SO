@@ -13,6 +13,7 @@ public class GeradorDeRequisitos{
 	private int min; 
 	private int req_geradas;
 	Random gerador = new Random();
+	Output output = new Output();
 
 	public GeradorDeRequisitos(int mx, int mn){
 		this.max = mx;
@@ -35,7 +36,7 @@ public class GeradorDeRequisitos{
 		for (int i = 0; i < quantidade; i++) {
 			requisicoes[i] = this.gerarRequisicao ();
 		}
-		System.out.println ("\tForam inseridas " + quantidade + " novos elementos no vetor de requisições");
+		output.escrever("\tForam inseridas " + quantidade + " novos elementos no vetor de requisições");
 
 		return requisicoes;
 	}

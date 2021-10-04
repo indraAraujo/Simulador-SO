@@ -1,6 +1,8 @@
 package tiso.Threads;
 import java.util.ArrayList;
 
+import tiso.Output;
+
 
 
 public class AnalisadorDeMemoriaThread implements Runnable{
@@ -14,6 +16,7 @@ public class AnalisadorDeMemoriaThread implements Runnable{
 	private ArrayList<VariavelThread> controle;
 	private int chamadasAoDesalocador;
 	private long tempoR, tempoI, tempoF;
+	Output output = new Output();
 
 	
 	//Construtor da classe.
@@ -87,9 +90,9 @@ public class AnalisadorDeMemoriaThread implements Runnable{
 
 	//Impressão da lista de buracos, para validação.
 	public void imprimeBuracos (){
-		System.out.println ("\n\t# Buracos:\n");
+		output.escrever("\n\t# Buracos:\n");
 		for (BuracosThread i : buracos)
-			System.out.println ("\t\tTamanho: " + i.getTamanho() + ", começa na posição " + i.getInicio() + ", vai até " + i.getFim());
+		output.escrever("\t\tTamanho: " + i.getTamanho() + ", começa na posição " + i.getInicio() + ", vai até " + i.getFim());
 	}
 
 	//Determinação da taxa de ocupação (em porcentagem), com base na quantidade e no tamanho de buracos.
@@ -98,21 +101,21 @@ public class AnalisadorDeMemoriaThread implements Runnable{
 
 		taxaOcupacao = calcularTaxaOcupacao();
 		if(taxaOcupacao > limiteMaxOcupacao){
-			System.out.println("Acionando desalocador");
-			System.out.println ("Taxa de ocupação: " + taxaOcupacao);
+			output.escrever("Acionando desalocador");
+			output.escrever("Taxa de ocupação: " + taxaOcupacao);
 			chamadasAoDesalocador ++;
 			while (calcularTaxaOcupacao() > limiteMinOcupacao) {
 				synchronized(MainThread.userHeap){
 					if(!controle.isEmpty()){
 						AlocadorTrhead.desaloc.desalocarVar(controle.get(0));
-						System.out.println("Taxa" + taxaOcupacao);
+						output.escrever("Taxa" + taxaOcupacao);
 						atualizarBuracos();
 						controle.remove(0);
 					}	
 				}	
 			}
 		}
-		else System.out.println ("Taxa de ocupação: " + taxaOcupacao);
+		else output.escrever("Taxa de ocupação: " + taxaOcupacao);
 	}
 	
 	//Calculo da Taxa de Ocupação.
@@ -124,7 +127,7 @@ public class AnalisadorDeMemoriaThread implements Runnable{
 		
 		double v = (double)(tamanhoHeap - memoria_livre) / tamanhoHeap;
 		taxaOcupacao = (v * 100);
-		System.out.println("Memoria Livre: " + memoria_livre + "Ocupação " +taxaOcupacao);
+		output.escrever("Memoria Livre: " + memoria_livre + "Ocupação " +taxaOcupacao);
 		return taxaOcupacao;
 	}
 
@@ -136,7 +139,7 @@ public class AnalisadorDeMemoriaThread implements Runnable{
 		taxaFragmentacao =  (v * 100);
 		if (taxaFragmentacao > limiteFragmentacao)
 			fragmentar();// compactar();
-		System.out.println ("\tTaxa de fragmentação: " + taxaFragmentacao + " buraco(s) / 100 posições de memória");
+			output.escrever("\tTaxa de fragmentação: " + taxaFragmentacao + " buraco(s) / 100 posições de memória");
 	}
 	public void fragmentar(){
 		int ponteiro = 0;

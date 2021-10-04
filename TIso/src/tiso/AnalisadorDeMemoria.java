@@ -23,6 +23,8 @@ public class AnalisadorDeMemoria
 	private DesalocadorDeMemoria desalocador;
 	private ArrayList<VariavelAlocada> controle;
 	private int chamadasAoDesalocador;
+	Output output = new Output();
+
 	
 	public AnalisadorDeMemoria (int tamanhoHeap, int limiteMaxOcupacao, int limiteMinOcupacao, int limiteFragmentacao, Heap heap)
 	{
@@ -82,9 +84,9 @@ public class AnalisadorDeMemoria
 	// imprime lista de buracos, para validação...
 	public void imprimeBuracos ()
 	{
-		System.out.println ("\n\t# Buracos:\n");
+		output.escrever("\n\t# Buracos:\n");
 		for (Buraco i : buracos)
-			System.out.println ("\t\tTamanho: " + i.getTamanho() + ", começa na posição " + i.getInicio() + ", vai até " + i.getFim());
+		output.escrever("\t\tTamanho: " + i.getTamanho() + ", começa na posição " + i.getInicio() + ", vai até " + i.getFim());
 	}
 
 	// determina taxa de ocupação (em %), com base na quantidade e no tamanho de buracos;
@@ -93,7 +95,7 @@ public class AnalisadorDeMemoria
 	{
 		taxaOcupacao = calcularTaxaOcupacao();
 		if (taxaOcupacao > limiteMaxOcupacao) {
-			System.out.println("\t\tAcionando desalocador");
+			output.escrever("\t\tAcionando desalocador");
 			chamadasAoDesalocador ++;
 			while (calcularTaxaOcupacao() > limiteMinOcupacao) {
 				if(!controle.isEmpty()){
@@ -104,7 +106,7 @@ public class AnalisadorDeMemoria
 			}
 		}
 		else
-			System.out.println ("\tTaxa de ocupação: " + taxaOcupacao);
+		output.escrever("\tTaxa de ocupação: " + taxaOcupacao);
 	}
 
 	public int calcularTaxaOcupacao()
@@ -128,7 +130,7 @@ public class AnalisadorDeMemoria
 		taxaFragmentacao = (int) (v * 100);
 		if (taxaFragmentacao > limiteFragmentacao)
 			;// compactar();
-		System.out.println ("\tTaxa de fragmentação: " + taxaFragmentacao + " buraco(s) / 100 posições de memória");
+			output.escrever("\tTaxa de fragmentação: " + taxaFragmentacao + " buraco(s) / 100 posições de memória");
 	}
 
 	public void setControle(ArrayList<VariavelAlocada> c)

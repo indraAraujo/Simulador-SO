@@ -1,5 +1,6 @@
 package test;
 
+import tiso.Heap;
 import tiso.Variavel;
 import tiso.VariavelAlocada;
 
@@ -49,13 +50,20 @@ public class Testes {
         geradorDeRequisitosTest.testGerarRequisicao();
         geradorDeRequisitosTest.testGerarRequisicoes(10);
   
-*/
+
         BuracoTest holeTest = new BuracoTest();
         holeTest.getInicioTest();
         holeTest.getFimTest();
         holeTest.getTamanhoTest();
-
-        
+*/
+        Heap heap = new Heap(200);
+        for(int i=0; i<89; i++){
+            heap.addHeap(42, i);
+        }
+        AnalisadorTest analisador = new AnalisadorTest(heap);
+        analisador.first_fit();
+        analisador.monitorar_fragmentacao();
+        analisador.monitorar_ocupacao();
 
 
      }

@@ -1,6 +1,8 @@
 package tiso.Threads;
 import java.util.Random;
 
+import tiso.Output;
+
 
 public class GeradorDeRequisitosTrhead implements Runnable{
     //private int buffer; // tamanho max da fila circular
@@ -14,6 +16,8 @@ public class GeradorDeRequisitosTrhead implements Runnable{
 	private long tempo;
 	private long tempoR, tempoI, tempoF;
 	Random gerador = new Random();
+	Output output = new Output();
+
 
 	//Construtor da classe.
 	public GeradorDeRequisitosTrhead(int mx, int mn, int total, long t){
@@ -38,18 +42,18 @@ public class GeradorDeRequisitosTrhead implements Runnable{
 		    // MainTrhead.gestorVet.acquire();
 		    synchronized (MainThread.vetor_Req){
 			    controle = MainThread.vetor_Req.inserir(req);
-			    System.out.println("[Thread Gerador] Requisição inserida no vetor de requisições, counter: " + counter);
+			    output.escrever("[Thread Gerador] Requisição inserida no vetor de requisições, counter: " + counter);
 		    }
 		    //MainTrhead.gestorVet.release();
 		    if(controle){
 			    // sleep();
-			    System.out.println("[Thread Gerador] gerador dormiu:");
+			    output.escrever("[Thread Gerador] gerador dormiu:");
 		    }
 			tempoF = System.nanoTime();
 			tempoR = ((tempoF - tempoI)/1000000);
 			MainThread.t_Gerador += tempoR;
 	    }
-	    System.out.println("[Thread Gerador] Gerador finalizou. Total de Req_geradas: " + req_geradas);
+	    output.escrever("[Thread Gerador] Gerador finalizou. Total de Req_geradas: " + req_geradas);
 	    //MainTrhead.userHeap.showHeap();
 
 	}
