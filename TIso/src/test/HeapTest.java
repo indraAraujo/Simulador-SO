@@ -1,6 +1,6 @@
 package test;
 
-import tiso.Heap;
+import tiso.Threads.Heap;
 
 public class HeapTest{
   int tamanho_heap = 89;

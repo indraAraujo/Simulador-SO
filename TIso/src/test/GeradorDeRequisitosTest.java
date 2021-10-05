@@ -1,11 +1,11 @@
 package test;
 
-import tiso.GeradorDeRequisitos;
+import tiso.GeradorDeRequisitosS;
 import tiso.Requisicao;
 
 public class GeradorDeRequisitosTest {
 
-    GeradorDeRequisitos gera = new GeradorDeRequisitos(10, 1);
+    GeradorDeRequisitosS gera = new GeradorDeRequisitosS(10, 1);
     int i;
 
     //Requisicao req = new Requisicao(10,"i");

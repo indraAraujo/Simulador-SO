@@ -1,5 +1,5 @@
 package test;
-import tiso.Buraco;
+import tiso.Threads.Buraco;
 public class BuracoTest {
     public int inicio;
     public int fim;

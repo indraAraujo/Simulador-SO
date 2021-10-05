@@ -3873,3 +3873,42 @@ Memoria Livre: 355Ocupação 64.5
 	Foram inseridas 2 novos elementos no vetor de requisições
 	Foram inseridas 2 novos elementos no vetor de requisições
 	Foram inseridas 3 novos elementos no vetor de requisições
+	Foram inseridas 3 novos elementos no vetor de requisições
+	Foram inseridas 1 novos elementos no vetor de requisições
+	Foram inseridas 3 novos elementos no vetor de requisições
+	Foram inseridas 3 novos elementos no vetor de requisições
+	Foram inseridas 2 novos elementos no vetor de requisições
+	Foram inseridas 1 novos elementos no vetor de requisições
+Memoria Livre: 1000Ocupação 0.0
+Taxa de ocupação: 0.0
+Memoria Livre: 1000Ocupação 0.0
+Taxa de ocupação: 0.0
+Memoria Livre: 1000Ocupação 0.0
+Taxa de ocupação: 0.0
+Memoria Livre: 1000Ocupação 0.0
+Taxa de ocupação: 0.0
+Memoria Livre: 0Ocupação 100.0
+Acionando desalocador
+Taxa de ocupação: 100.0
+Memoria Livre: 88Ocupação 91.2
+Memoria Livre: 471Ocupação 52.900000000000006
+Memoria Livre: 312Ocupação 68.8
+Memoria Livre: 156Ocupação 84.39999999999999
+Memoria Livre: 279Ocupação 72.1
+Memoria Livre: 353Ocupação 64.7
+Memoria Livre: 241Ocupação 75.9
+Memoria Livre: 0Ocupação 100.0
+Memoria Livre: 269Ocupação 73.1
+Memoria Livre: 218Ocupação 78.2
+Memoria Livre: 280Ocupação 72.0
+Memoria Livre: 575Ocupação 42.5
+Memoria Livre: 639Ocupação 36.1
+Memoria Livre: 639Ocupação 36.1
+Memoria Livre: 759Ocupação 24.099999999999998
+Memoria Livre: 591Ocupação 40.9
+Memoria Livre: 198Ocupação 80.2
+Memoria Livre: 659Ocupação 34.1
+Memoria Livre: 152Ocupação 84.8
+	Foram inseridas 3 novos elementos no vetor de requisições
+	Foram inseridas 10 novos elementos no vetor de requisições
+	Foram inseridas 10 novos elementos no vetor de requisições

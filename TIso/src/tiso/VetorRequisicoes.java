@@ -9,9 +9,9 @@ public class VetorRequisicoes {
 	private ArrayList<Requisicao> fila = new ArrayList<>();
 
 
-	public boolean inserir(Requisicao requisicao){
+	public boolean inserir(Requisicao Requisicao){
 		boolean cheia = false;	
-			fila.add(fim, requisicao);
+			fila.add(fim, Requisicao);
 			fim++;
 		return cheia;
 	}

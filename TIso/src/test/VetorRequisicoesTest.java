@@ -1,12 +1,12 @@
 package test;
 
-import tiso.GeradorDeRequisitos;
+import tiso.GeradorDeRequisitosS;
 import tiso.VetorRequisicoes;
 
 public class VetorRequisicoesTest {
     int tamanho_maximo_variavel = 1000;
     int tamanho_minimo_variavel = 30;
-    GeradorDeRequisitos gerador = new GeradorDeRequisitos(tamanho_maximo_variavel, tamanho_minimo_variavel);
+    GeradorDeRequisitosS gerador = new GeradorDeRequisitosS(tamanho_maximo_variavel, tamanho_minimo_variavel);
     //TESTE DO VETOR DE REQUISIÇÕES
     int tamanho_vetor = 100;
     VetorRequisicoes vetorRequisicoes = new VetorRequisicoes();

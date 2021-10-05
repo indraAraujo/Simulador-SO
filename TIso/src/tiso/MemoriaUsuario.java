@@ -1,6 +1,6 @@
 package tiso;
 
-
+import tiso.Threads.Heap;
 
 /**
  *

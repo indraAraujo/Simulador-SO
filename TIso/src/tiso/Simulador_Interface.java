@@ -4,6 +4,7 @@ package tiso;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JRadioButton;
 
 import tiso.Threads.AlocadorTrhead;
@@ -408,25 +409,18 @@ public class Simulador_Interface extends javax.swing.JFrame implements ActionLis
 
     private void playActionPerformed(java.awt.event.ActionEvent evt) {                                     
             ocupacao_max = Integer.valueOf(ocupacaoMax.getText());
-            System.out.println(ocupacao_max);
             ocupacao_min = Integer.valueOf(ocupacaoMin.getText());
-            System.out.println(ocupacao_min);
             frag = Integer.valueOf(fragmentacao.getText());
-            System.out.println(frag);
             var_tamMax = Integer.valueOf(tam_varMax.getText());
-            System.out.println(var_tamMax);
             var_tamMin = Integer.valueOf(tam_varMin.getText());
-            System.out.println(var_tamMin);
             heap_tam = Integer.valueOf(tam_heap.getText());
-            System.out.println(heap_tam);
             var_qnt = Integer.valueOf(qnt_var.getText());
-            System.out.println(var_qnt);
             if(versao==1){
-                Heap userHeap = new Heap(heap_tam);
-                AnalisadorDeMemoria analisadorMemoria = new AnalisadorDeMemoria(heap_tam, ocupacao_max, ocupacao_min, frag, userHeap);
+                HeapS userHeap = new HeapS(heap_tam);
+                AnalisadorDeMemoriaS analisadorMemoria = new AnalisadorDeMemoriaS(heap_tam, ocupacao_max, ocupacao_min, frag, userHeap);
                 VetorRequisicoes vetor_requisicoes = new VetorRequisicoes();
-                GeradorDeRequisitos geradorReq = new GeradorDeRequisitos(var_tamMin, var_tamMin);
-                Alocador alocador = new Alocador (userHeap, analisadorMemoria);
+                GeradorDeRequisitosS geradorReq = new GeradorDeRequisitosS(var_tamMin, var_tamMin);
+                AlocadorS alocador = new AlocadorS (heap_tam, userHeap, analisadorMemoria);
 
                 /* 
                 * Obs: na versão sequencial, há um loop pra simular um funcionamento concorrente;
@@ -446,7 +440,7 @@ public class Simulador_Interface extends javax.swing.JFrame implements ActionLis
                     // cria requisições novas, inserindo-as no vetor de requisições
                     Requisicao[] tmp = geradorReq.gerarRequisicoes(genRandom(1, maxReqPorIteracao));
                     for (int i = 0; i < tmp.length; i++)
-                        vetor_requisicoes.inserir (tmp[i]);
+                        vetor_requisicoes.inserir(tmp[i]);
 
                     // alocador de memória entra em ação
                     int j;

@@ -1,6 +1,5 @@
 package tiso.Threads;
 
-import tiso.Heap;
 import tiso.VetorRequisicoes;
 
 public class MainThread {

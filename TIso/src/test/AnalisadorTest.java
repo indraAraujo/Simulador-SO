@@ -2,20 +2,20 @@ package test;
 
 import java.util.ArrayList;
 
-import tiso.AnalisadorDeMemoria;
-import tiso.Buraco;
-import tiso.Heap;
+import tiso.AnalisadorDeMemoriaS;
+import tiso.Threads.Buraco;
+import tiso.Threads.Heap;
 
 public class AnalisadorTest {
     
-    AnalisadorDeMemoria analisador;
+    AnalisadorDeMemoriaS analisador;
     Heap heap;
     ArrayList<Buraco> buracos = new ArrayList<>();
     
     //Construtor para o Analisador
     public AnalisadorTest(Heap heap) {
         this.heap = heap;
-        analisador = new AnalisadorDeMemoria(200, 80, 20, 80, heap);
+        //analisador = new AnalisadorDeMemoriaS(200, 80, 20, 80, heap);
         buracos.add(new Buraco(90, 200));
     }
 

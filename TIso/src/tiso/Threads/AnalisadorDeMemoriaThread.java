@@ -1,7 +1,6 @@
 package tiso.Threads;
 import java.util.ArrayList;
 
-import tiso.Buraco;
 import tiso.Output;
 import tiso.Variavel;
 
@@ -97,21 +96,17 @@ public class AnalisadorDeMemoriaThread implements Runnable{
 
 		taxaOcupacao = calcularTaxaOcupacao();
 		if(taxaOcupacao > limiteMaxOcupacao){
-			output.escrever("Acionando desalocador");
-			output.escrever("Taxa de ocupação: " + taxaOcupacao);
 			chamadasAoDesalocador ++;
 			while (calcularTaxaOcupacao() > limiteMinOcupacao) {
 				synchronized(MainThread.userHeap){
 					if(!controle.isEmpty()){
 						AlocadorTrhead.desaloc.desalocarVar(controle.get(0));
-						output.escrever("Taxa" + taxaOcupacao);
 						atualizarBuracos();
 						controle.remove(0);
 					}	
 				}	
 			}
 		}
-		else output.escrever("Taxa de ocupação: " + taxaOcupacao);
 	}
 	
 	//Calculo da Taxa de Ocupação.
@@ -123,7 +118,6 @@ public class AnalisadorDeMemoriaThread implements Runnable{
 		
 		double v = (double)(tamanhoHeap - memoria_livre) / tamanhoHeap;
 		taxaOcupacao = (v * 100);
-		output.escrever("Memoria Livre: " + memoria_livre + "Ocupação " +taxaOcupacao);
 		return taxaOcupacao;
 	}
 
